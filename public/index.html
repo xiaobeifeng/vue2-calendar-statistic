@@ -1,0 +1,65 @@
+<!--
+ * @Author: ARAN
+ * @Date: 2021-08-19 17:41:13
+ * @LastEditors: Qianhn
+ * @LastEditTime: 2022年07月28日16时24分10秒
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait" />
+    <!-- uc强制竖屏 -->
+    <meta name="x5-orientation" content="portrait" />
+    <!-- QQ强制竖屏 -->
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no,address=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title>长护险APP</title>
+    <style>
+      html::-webkit-scrollbar {
+        display: none;
+        width: 0 !important;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+        width: 0 !important;
+      }
+      #app::-webkit-scrollbar {
+        display: none;
+        width: 0 !important;
+      }
+      .customLoading .van-toast__icon img {
+        width: 25vw;
+        height: 25vw;
+      }
+      :root {
+        --sat: env(safe-area-inset-top);
+        --sar: env(safe-area-inset-right);
+        --sab: env(safe-area-inset-bottom);
+        --sal: env(safe-area-inset-left);
+      }
+      /*.van-nav-bar__content {*/
+      /*  display: none !important;*/
+      /*}*/
+      /*.view-content {*/
+      /*  top: 0 !important;*/
+      /*}*/
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="<%= BASE_URL %>j2c_core.js"></script>
+    <script src="<%= BASE_URL %>j2c_core_kit_new.js"></script>
+    <script src="inobounce.min.js"></script>
+    <script src='https://www.jszwfw.gov.cn/jmopen/jssdk/index.js'></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+/dist/*
+.local
+.output.js
+/node_modules/**
+
+**/*.svg
+**/*.sh
+
+/public/*
+
+j2c_core.js
+j2c_core_kit.js
+j2c_core_kit_new. js
