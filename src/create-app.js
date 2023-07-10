@@ -14,6 +14,6 @@ if (process.env.VUE_APP_ENV === 'development') {
   Vue.config.productionTip = true
 } else {
   // eslint-disable-next-line
-  // new VConsole()
+  new VConsole()
   Vue.config.productionTip = false
 }

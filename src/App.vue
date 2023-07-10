@@ -3,8 +3,8 @@
     <div class="main">
       <van-sidebar class="nav" v-model="activeKey">
         <van-sidebar-item
-          v-for="item in calendars"
-          :key="item.id"
+          v-for="(item, index) in calendars"
+          :key="index"
           :title="item.title"
           @click="handleCalendarCardClick"
         />
@@ -29,11 +29,32 @@
         </div>
         <div class="body__content">
           <div class="body__content__title">
+            <div>今日工作</div>
+            <van-button
+              class="body__content__subtitle"
+              icon="notes-o"
+              @click="copyText('toady')"
+            >复制今日工作内容</van-button
+            >
+          </div>
+          <div
+            class="body__content__work"
+            v-for="(item, index) in calendarEventInfo.todayData"
+            :key="`today-${index}`"
+          >
+            <div>{{ item.title }}</div>
+            <div class="body__content__work__date">
+              {{
+                `${item.startDate} 至 ${item.endDate} 耗时 ${item.lastHour}h`
+              }}
+            </div>
+          </div>
+          <div class="body__content__title">
             <div>本周工作</div>
             <van-button
               class="body__content__subtitle"
               icon="notes-o"
-              @click="copyText"
+              @click="copyText(week)"
               >复制本周工作内容</van-button
             >
           </div>
@@ -85,13 +106,21 @@ export default Vue.extend({
       })
     },
     handleSidebarClick() {},
-    copyText() {
+    copyText(type) {
       // 数字没有 .length 不能执行selectText 需要转化成字符串
       let titles = []
-      this.calendarEventInfo.data.forEach((item) => {
-        let info = `${item.index}. ${item.title}`
-        titles.push(info)
-      })
+      if (type === 'toady') {
+        this.calendarEventInfo.todayData.forEach((item) => {
+          let info = `${item.index}. ${item.title}`
+          titles.push(info)
+        })
+      }
+      if (type === 'week') {
+        this.calendarEventInfo.data.forEach((item) => {
+          let info = `${item.index}. ${item.title}`
+          titles.push(info)
+        })
+      }
       const textString = titles.join('\n')
       console.log(textString)
       let input = document.querySelector('#copy-input')
