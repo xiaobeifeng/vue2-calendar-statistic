@@ -1,10 +1,10 @@
 const resolve = (dir) => require('path').join(__dirname, dir)
 const path = require('path')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
-const vantCustomStylePath = require('path').join(
-  __dirname,
-  './src/style/vant-custom.less'
-)
+// const vantCustomStylePath = require('path').join(
+//   __dirname,
+//   './src/style/vant-custom.less'
+// )
 
 const devPath = 'http://222.189.10.20:8000' // 连云港测试环境
 const prodPath = 'http://172.19.198.163:8081'
@@ -44,7 +44,7 @@ module.exports = {
         // 若 less-loader 版本小于 6.0，请移除 lessOptions 这一级，直接配置选项。
         modifyVars: {
           // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
-          hack: `true; @import "${vantCustomStylePath}";`
+          // hack: `true; @import "${vantCustomStylePath}";`
         }
       }
     }

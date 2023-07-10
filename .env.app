@@ -1,8 +1,3 @@
 NODE_ENV=production
 # 环境标识
 VUE_APP_ENV = 'app'
-
-# 业务上下文
-VUE_APP_BUS_REQUEST_PATH = 'http://222.189.10.20:8000/hsa-pss-ltci/web/app'
-# 认证上下文
-VUE_APP_AUTH_REQUEST_PATH = 'http://222.189.10.20:8000/hsa-ltci-auth'

@@ -32,15 +32,7 @@ module.exports = {
     },
     { value: 'revert', name: 'revert:   Revert to a commit' }
   ],
-  scopes: [
-    { name: 'mine' },
-    { name: 'home' },
-    { name: 'insured' },
-    { name: 'login' },
-    { name: 'evaluator' },
-    { name: 'caregiver' }
-  ],
-
+  scopes: [],
   // it needs to match the value for field type. Eg.: 'fix'
   /*
   scopeOverrides: {

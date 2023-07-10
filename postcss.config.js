@@ -11,7 +11,7 @@ module.exports = {
       browsers: ['Android >= 4.0', 'iOS >= 7']
     },
     'postcss-pxtorem': {
-      rootValue: 37.5, // 结果为：设计稿元素尺寸/75，设计稿宽 750,最终页面会换算成 10rem
+      rootValue: 144, // 结果为：设计稿元素尺寸/75，设计稿宽 750,最终页面会换算成 10rem
       // unitPrecision: 5, // 允许REM单位增长的十进制数
       propList: ['*'],
       // selectorBlackList: [""],

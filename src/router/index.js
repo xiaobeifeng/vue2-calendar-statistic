@@ -4,16 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 const indexRouter = [
   {
-    path: '/layout',
-    component: () => import('@/layout/layout-new.vue'),
-    children: []
-  },
-  {
-    path: '/',
-    redirect: '/layout/home'
-  },
-  {
-    path: '/register'
+    path: '/'
   }
 ]
 
