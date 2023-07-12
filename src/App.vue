@@ -11,7 +11,14 @@
       </van-sidebar>
       <div class="body">
         <div class="body__header">
-          <div class="body__content__title">概览</div>
+          <div class="body__content__title">
+            概览
+            <van-icon
+              class="body__content__title__icon"
+              name="replay"
+              @click="handleWebViewReload()"
+            />
+          </div>
           <div class="body__header__overview">
             <div>项目名称：{{ calendarEventInfo.calendarName }}</div>
             <div>日期区间：{{ calendarEventInfo.dateInterval }}</div>
@@ -34,7 +41,7 @@
               class="body__content__subtitle"
               icon="notes-o"
               @click="copyText('toady')"
-            >复制今日工作内容</van-button
+              >复制今日工作内容</van-button
             >
           </div>
           <div
@@ -42,7 +49,7 @@
             v-for="(item, index) in calendarEventInfo.todayData"
             :key="`today-${index}`"
           >
-            <div>{{ item.title }}</div>
+            <div>{{ `${index + 1}.${item.title}` }}</div>
             <div class="body__content__work__date">
               {{
                 `${item.startDate} 至 ${item.endDate} 耗时 ${item.lastHour}h`
@@ -63,7 +70,7 @@
             v-for="(item, index) in calendarEventInfo.data"
             :key="index"
           >
-            <div>{{ item.title }}</div>
+            <div>{{ `${index + 1}.${item.title}` }}</div>
             <div class="body__content__work__date">
               {{
                 `${item.startDate} 至 ${item.endDate} 耗时 ${item.lastHour}h`
@@ -77,10 +84,9 @@
 </template>
 <script>
 import Vue from 'vue'
-import CustomCalendarCard from '@/components/custom-calendar-card.vue'
+import { Toast } from 'vant'
 export default Vue.extend({
   name: 'App',
-  components: { CustomCalendarCard },
   data() {
     return {
       calendars: [],
@@ -98,26 +104,30 @@ export default Vue.extend({
   },
   methods: {
     handleCalendarCardClick(index) {
-      // eslint-disable-next-line no-undef
       console.log(this.calendars[index])
+      // eslint-disable-next-line no-undef
       J2C.getCalendarEvent({ id: this.calendars[index].id }, (result) => {
         console.log(result)
         this.calendarEventInfo = result.data
       })
     },
     handleSidebarClick() {},
+    handleWebViewReload() {
+      // eslint-disable-next-line no-undef
+      J2C.webViewReload()
+    },
     copyText(type) {
       // 数字没有 .length 不能执行selectText 需要转化成字符串
       let titles = []
       if (type === 'toady') {
-        this.calendarEventInfo.todayData.forEach((item) => {
-          let info = `${item.index}. ${item.title}`
+        this.calendarEventInfo.todayData.forEach((item, index) => {
+          let info = `${index + 1}. ${item.title}`
           titles.push(info)
         })
       }
       if (type === 'week') {
-        this.calendarEventInfo.data.forEach((item) => {
-          let info = `${item.index}. ${item.title}`
+        this.calendarEventInfo.data.forEach((item, index) => {
+          let info = `${index + 1}. ${item.title}`
           titles.push(info)
         })
       }
@@ -242,6 +252,9 @@ export default Vue.extend({
       font-size: 28px;
       font-weight: 600;
       background-color: white;
+      &__icon {
+        margin-left: 20px;
+      }
     }
     &__subtitle {
       height: 30px;
