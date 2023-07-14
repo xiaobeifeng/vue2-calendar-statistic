@@ -61,7 +61,7 @@
             <van-button
               class="body__content__subtitle"
               icon="notes-o"
-              @click="copyText(week)"
+              @click="copyText('week')"
               >复制本周工作内容</van-button
             >
           </div>
@@ -131,6 +131,7 @@ export default Vue.extend({
           titles.push(info)
         })
       }
+      console.log(titles)
       const textString = titles.join('\n')
       console.log(textString)
       let input = document.querySelector('#copy-input')
