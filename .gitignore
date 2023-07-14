@@ -1,9 +1,6 @@
 .DS_Store
 .history
 node_modules
-/dist
-/ui
-/output
 package-lock.json
 #vue.project.config.js
 # local env files
