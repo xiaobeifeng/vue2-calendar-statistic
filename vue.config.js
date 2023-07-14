@@ -38,6 +38,7 @@ module.exports = {
   assetsDir: 'assets',
   // 工程上下文
   publicPath: '',
+  outputDir: 'docs',
   css: {
     loaderOptions: {
       less: {
