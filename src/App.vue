@@ -41,7 +41,7 @@
               class="body__content__subtitle"
               icon="notes-o"
               @click="printInfo('toady')"
-              >复制今日工作内容</van-button
+              >打印</van-button
             >
           </div>
           <div
@@ -62,7 +62,7 @@
               class="body__content__subtitle"
               icon="notes-o"
               @click="printInfo('week')"
-              >复制本周工作内容</van-button
+              >打印</van-button
             >
           </div>
           <div
