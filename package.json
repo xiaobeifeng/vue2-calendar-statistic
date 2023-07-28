@@ -4,12 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "lint": "vue-cli-service lint",
-    "add": "node bin/create-module.js",
-    "build:app": "vue-cli-service build --mode app",
-    "build:test": "vue-cli-service build --mode test",
     "build:prod": "vue-cli-service build --prod",
-    "build:report": "vue-cli-service build --mode prod --report",
     "prepare": "husky install",
     "commit": "cz"
   },

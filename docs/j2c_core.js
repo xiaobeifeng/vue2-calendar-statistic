@@ -33,6 +33,18 @@
     window.webkit.messageHandlers[methodName].postMessage({})
   }
 
+  // 复制到剪切板
+  let getCallback4Pasteboard
+  function pasteboard(info, callback) {
+    getCallback4Pasteboard = callback
+    let methodName = /function\s*(\w*)/i.exec(arguments.callee.toString())[1]
+    console.log('[methodName]' + methodName)
+    window.webkit.messageHandlers[methodName].postMessage(info)
+  }
+  function callback4Pasteboard(callbackInfo) {
+    getCallback4Pasteboard(callbackInfo)
+  }
+
   window['J2C']['getCalendars'] = getCalendars
   window['J2C']['callback4getCalendars'] = callback4getCalendars
 
@@ -40,6 +52,9 @@
   window['J2C']['callback4getCalendarEvent'] = callback4getCalendarEvent
 
   window['J2C']['webViewReload'] = webViewReload
+
+  window['J2C']['pasteboard'] = pasteboard
+  window['J2C']['callback4Pasteboard'] = callback4Pasteboard
 
 
 })()
