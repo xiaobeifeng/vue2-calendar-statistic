@@ -40,8 +40,8 @@
             <van-button
               class="body__content__subtitle"
               icon="notes-o"
-              @click="printInfo('toady')"
-              >打印</van-button
+              @click="handlePasteboardEvent('toady')"
+              >复制到剪切板</van-button
             >
           </div>
           <div
@@ -61,8 +61,8 @@
             <van-button
               class="body__content__subtitle"
               icon="notes-o"
-              @click="printInfo('week')"
-              >打印</van-button
+              @click="handlePasteboardEvent('week')"
+              >复制到剪切板</van-button
             >
           </div>
           <div
@@ -116,12 +116,17 @@ export default Vue.extend({
       // eslint-disable-next-line no-undef
       J2C.webViewReload()
     },
-    printInfo(type) {
+    handlePasteboardEvent(type) {
       let titles = []
       if (type === 'toady') {
         this.calendarEventInfo.todayData.forEach((item, index) => {
           let info = `${index + 1}. ${item.title}`
           titles.push(info)
+        })
+        console.log(titles)
+        // eslint-disable-next-line no-undef
+        J2C.pasteboard(titles.join('\n'), () => {
+          Toast('已复制到剪切板')
         })
       }
       if (type === 'week') {
@@ -129,10 +134,11 @@ export default Vue.extend({
           let info = `${index + 1}. ${item.title}`
           titles.push(info)
         })
+        // eslint-disable-next-line no-undef
+        J2C.pasteboard(titles.join('\n'), () => {
+          Toast('已复制到剪切板')
+        })
       }
-      console.log(titles)
-      const textString = titles.join('\n')
-      console.log(textString)
     }
   }
 })
@@ -266,12 +272,15 @@ export default Vue.extend({
   user-select: none;
   background-color: #fff;
   border-radius: 10px;
+  background-color: #f5f6fa;
 }
 /deep/ .van-sidebar-item--select {
-  background-color: #1e80ff1a;
+  background-color: #07C160;
+  color: white;
 }
 /deep/ .van-sidebar-item--select:active {
-  background-color: #1e80ff1a;
+  background-color: #07C160;
+  color: white;
 }
 /deep/ .van-sidebar-item--select::before {
   position: absolute;
